@@ -25,6 +25,8 @@ func Gorm() {
 	//	GormSqlite()
 	case "sqlserver":
 		GormSqlServer()
+	default:
+		GormMysql()
 	}
 }
 
@@ -82,7 +84,7 @@ func GormMysql() {
 // GormPostgreSql 初始化PostgreSql数据库
 func GormPostgreSql() {
 	p := global.GVA_CONFIG.Postgresql
-	dsn := "user=" + p.Username + " password=" + p.Password + " dbname=" + p.Dbname + " port=" + p.Port + " " + p.Config
+	dsn := "host="+ p.Host + " user=" + p.Username + " password=" + p.Password + " dbname=" + p.Dbname + " port=" + p.Port + " " + p.Config
 	postgresConfig := postgres.Config{
 		DSN:                  dsn,                    // DSN data source name
 		PreferSimpleProtocol: p.PreferSimpleProtocol, // 禁用隐式 prepared statement
@@ -117,7 +119,7 @@ func GormPostgreSql() {
 // GormSqlServer 初始化SqlServer数据库
 func GormSqlServer() {
 	ss := global.GVA_CONFIG.Sqlserver
-	dsn := "sqlserver://" + ss.Username + ":" + ss.Password + "@" + ss.Path + "?database=gorm"
+	dsn := "sqlserver://" + ss.Username + ":" + ss.Password + "@" + ss.Path + "?database=" + ss.Dbname
 	if global.GVA_DB, err = gorm.Open(sqlserver.Open(dsn), &gorm.Config{}); err != nil {
 		global.GVA_LOG.Error("SqlServer启动异常", zap.Any("err", err))
 		os.Exit(0)

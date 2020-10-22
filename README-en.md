@@ -70,7 +70,7 @@ We are excited that you are interested in contributing to gin-vue-admin. Before 
 
 ```
 - node version > v8.6.0
-- golang version >= v1.11
+- golang version >= v1.14
 - IDE recommendation: Goland
 - We recommend you to apply for your own cloud service in QINIU. Replace the public key, private key, warehouse name and default url address with your own, so as not to mess up the test database.
 ```
@@ -374,6 +374,3 @@ If you find this project useful, you can buy author a glass of juice :tropical_d
 
 If you use this project for commercial purposes, please comply with the Apache2.0 agreement and retain the author's technical support statement.
 
-## 11.Links
-
-A high performance web and rpc framework, with powerful code generator. [go-zero](https://github.com/tal-tech/go-zero)
